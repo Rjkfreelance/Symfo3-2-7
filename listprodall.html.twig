@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>List Products All</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+table,td,th { 
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    
+}
+
+</style>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/listProdall">Products</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/listProdall">Listallproducts</a></li>
+      <li><a href="/create/new/product">Addnewproduct</a></li>
+      <li><a href="#">Another</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  {% if TitleContain is defined %}
+  <h2>{{ TitleContain }}</h2>
+  {% endif %}
+<div class="list-group">
+ {% if Prods is defined %}
+   {% for field in Prods %}
+    <!-- Modal -->
+    <div class="modal fade" id="formModal{{ field.id }}" role="dialog">
+    <div class="modal-dialog">
+     <!-- Modal content-->
+      <div class="modal-content" style='width:100%'>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Product</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+           <form action='/insertnew/prod' method='post' name='form_{{ field.id }}'>
+           	<input type="hidden" name="id" value="{{ field.id }}">
+             <table>
+             <tr>
+             <th colspan='4'>
+               Product Details Id: {{ field.id }}
+             </th>
+            </tr>
+             <tr>
+             	<td>Name:</td><td><input type='text' value='{{ field.name }}' name='n' ></td>
+             	<td>Price:</td><td><input type='text' value='{{ field.price }}' name='pri' ></td>
+             </tr>	
+             <tr> 
+             <td>Description:</td><td><input type='text' value='{{ field.description }}' name='desc'></td><td></td><td></td>
+             </tr>
+             <br>
+             <tr>
+             	<td colspan="4">
+             	<input type="submit" name="record" value="Save" class='btn btn-info btn-lg' style="float:right">
+                </td>
+             </tr>
+             
+             </table>
+           
+           </form>
+         
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+   </div>
+   <!-- Modal -->
+    <!--<a href="/plist/{{ field.id }}" class="list-group-item">--><div class='list-group-item'>{{ field.id }}  {{ field.name }}  {{ field.price }}  {{ field.description }}<a href="#" class="btn btn-success btn-xs"   style='float:right' data-toggle="modal" data-target="#formModal{{ field.id }}"><span class="glyphicon glyphicon-pencil"></span>แก้ไข</a></div>
+
+      {% endfor %}
+   
+   {%  endif %}
+  </div>
+</div>
+
+
+
+	
+      
+      
+
+    
+</body>
+</html>
