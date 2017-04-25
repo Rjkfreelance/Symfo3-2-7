@@ -50,8 +50,8 @@ public function createAction($name,$prc,$desc)
  }
  
  /**
-  @Route("/create/product")
-*/
+ *  @Route("/create/product")
+ */
 public function precreate(){
   
   return $this->render('products/create_form.html.twig');
@@ -66,7 +66,7 @@ public function CreateProd(Request $request)
 }
 
 /**
-  @Route("/newaddproduct")
+* @Route("/newaddproduct")
 */
 public function InsertPD(Request $request){
   
@@ -211,7 +211,7 @@ public function showByPrice($prc){
   
 }
 /**
- @Route("/match-name-price/{name}/{price}")
+ * @Route("/match-name-price/{name}/{price}")
 */
 public function showby_match_NamePrice($name,$price){
   
@@ -229,7 +229,7 @@ public function showby_match_NamePrice($name,$price){
  } 
 
 /**
- @Route("/matchname-orderprice/{name}/{sortby}")
+ * @Route("/matchname-orderprice/{name}/{sortby}")
 */
 public function showby_matchName_OrderbyPrice($name,$sortby){
   $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
@@ -252,7 +252,7 @@ public function showby_matchName_OrderbyPrice($name,$sortby){
 }
 
 /**
- @Route("/updateprice/{pid}/{prc}")
+ * @Route("/updateprice/{pid}/{prc}")
 */
 
 public function updatePrice($pid,$prc){
@@ -289,7 +289,7 @@ public function updatePrice($pid,$prc){
 }
 
 /**
-  @Route("/deleteproduct/{id}")
+ * @Route("/deleteproduct/{id}")
 */
 
 public function deleteAction($id){
@@ -314,7 +314,7 @@ public function deleteAction($id){
 }
 
 /**
-  @Route("/queryprice/dql/{pri}")
+ * @Route("/queryprice/dql/{pri}")
 */
 public function query_DQL($pri){
 
