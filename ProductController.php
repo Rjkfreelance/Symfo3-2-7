@@ -121,8 +121,9 @@ public function EachProduct($item)
    //return $this->render('products/listprodall.html.twig',['Id'=>$item]);
 }
 
+
 /**
-* @Route("/insertnew/prod")
+* @Route("/edit/prod")
 */
 public function InstNewProd(Request $request){
    
