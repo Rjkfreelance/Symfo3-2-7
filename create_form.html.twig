@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create Form Product</title>
+</head>
+<body>
+	<form action='/newaddproduct' method='post'>
+   <input type="text" name="name" placeholder="Product name">
+   <input type="text" name="price" placeholder="Product price">
+   <input type="text" name="decscrpt" placeholder="Product decscription">
+   <input type='submit' name='keep' value='Save'>
+	</form>
+	{% if Data is defined %}
+     {% for i in Data %}
+      {{ i }}
+     {% endfor %}
+	{% endif  %}
+	{% if Id is defined %}
+     Save new product: {{ Id }}<br>
+     <a href='/showall'><button>Showall</button></a>
+	{% endif %}
+</body>
+</html>
